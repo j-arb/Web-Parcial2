@@ -35,8 +35,7 @@ function Books() {
                     </Row>
                 </Col>
                 <Col>
-                       <h1>{books[0].name}</h1> 
-                       <p>ISBN: {books[0].isbn}</p>
+                       <p>Detalle</p>
                 </Col>
             </Row>
         </Container>
