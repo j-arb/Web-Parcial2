@@ -7,7 +7,7 @@ function Books() {
         const URL = "http://127.0.0.1:3001/books";
         fetch(URL).then(data => data.json()).then(data => {
             setBooks(data)
-        })
+        }).catch(err => alert(err))
     }, []);
 
     return(
