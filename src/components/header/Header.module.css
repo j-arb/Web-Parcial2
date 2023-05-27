@@ -1,0 +1,27 @@
+.logo {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: white;
+}
+
+.hDiv {
+    background-color: var(--lib-blue);
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.lib {
+    color: white;
+}
+
+.lib:hover {
+    color: white;
+    cursor: pointer;
+}

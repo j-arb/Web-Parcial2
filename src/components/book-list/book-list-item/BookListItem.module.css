@@ -1,0 +1,21 @@
+.card {
+    border-radius: 0;
+    border-color: black;
+    border-width: 2px;
+    width: 15rem;
+    padding: 5px;
+}
+
+.img {
+    border-radius: 0;
+}
+
+.title {
+    font-weight: 400;
+    margin-bottom: 2px;
+    margin-top: 4px;
+}
+
+.text {
+    font-size: 0.85rem;
+}

@@ -1,12 +1,27 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import BookListItem from "./book-list-item/BookListItem";
+import BookDetail from "../book-detail/BookDetail";
 
-function Books() {
+function BookList() {
     const [books, setBooks] = useState([]);
+    const [bookD, setBookD] = useState([]);
+
+    let bookDSetter = (book) => {
+        let bookId = book.id
+        const URL = "http://127.0.0.1:3001/books/" + bookId;
+        fetch(URL).then(data => data.json()).then(data => {
+            setBookD(data)
+        }).catch(err => alert(err));
+    }
+
     useEffect(()=>{
         const URL = "http://127.0.0.1:3001/books";
         fetch(URL).then(data => data.json()).then(data => {
             setBooks(data)
+            return data
+        }).then(data => {
+            bookDSetter(data[0]);
         }).catch(err => alert(err))
     }, []);
 
@@ -19,15 +34,7 @@ function Books() {
                         books.map((book) => {
                             return(
                                 <Col className="my-2">
-                                    <Card style={{ width: '18rem' }}>
-                                        <Card.Img variant="top" src={book.image} />
-                                        <Card.Body>
-                                            <Card.Title>{book.name}</Card.Title>
-                                            <Card.Text>
-                                                ISBN: {book.isbn}
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card>
+                                    <BookListItem book={book} bookDSetter={bookDSetter}/>
                                 </Col>
                             )
                         })
@@ -35,11 +42,11 @@ function Books() {
                     </Row>
                 </Col>
                 <Col>
-                       <p>Detalle</p>
+                       <BookDetail book={bookD} />
                 </Col>
             </Row>
         </Container>
     )
 }
 
-export default Books
+export default BookList

@@ -1,0 +1,13 @@
+.title {
+    font-size: 2rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+}
+
+.table>:not(caption)>*>* {
+    padding: 0;
+}
+
+.text {
+    margin-bottom: 0;
+}
