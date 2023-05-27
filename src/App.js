@@ -11,21 +11,19 @@ import { FormattedMessage, IntlProvider } from 'react-intl';
 import LangSelector from './components/lang-selector/LangSelector';
 
 function App() {
-  let [logedin, setLogedin] = useState([]);
-  let [locale, setLocale] = useState([]);
-  let [messages, setMessages] = useState([]);
-
-  useEffect(() => {
+  let [logedin, setLogedin] = useState(() => {
+    return localStorage.getItem("rol") ? true : false
+  });
+  let [locale, setLocale] = useState(() => {
     let lang = localStorage.getItem("locale") || navigator.language
     if(lang === "en") {
-      setLocale("en")
+      return "en"
     } else {
-      setLocale("es")
+      return "es"
     }
-    if(localStorage.getItem("rol")) {
-      setLogedin(true);
-    }
-  }, []);
+  });
+
+  let [messages, setMessages] = useState([]);
 
   useEffect(() => {
     localStorage.setItem("locale", locale)
